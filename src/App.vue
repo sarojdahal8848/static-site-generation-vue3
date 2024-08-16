@@ -15,35 +15,22 @@ async function fetchData() {
 }
 
 
-
-const metaData = ref({
-      title: 'NRN Legal by MeroAdda®',
-      description: `NRN Legal is a prominent legal service of
-      MeroAdda® catering to the needs of Nepali citizens living
-      abroad. It aims to support and provide legal assistance to
-      Nepali expatriates around the world. NRN Legal plays an
-      important role in safeguarding the rights and interests
-      of Nepali nationals residing outside their home country.
-      NRN Legal, provided by MeroAdda®, an online service provider,
-      collaborates with legal professionals and experts to ensure
-      that Nepali expatriates receive comprehensive legal solutions.`,
-      url: `https://www.google.com`,
-    })
+const metaUrl = () => `https://example.com/products/${product.value.id}`
 
 useHead({
-      title: metaData.value.title,
+      title: () => product.value.title,
       meta: [
         {
           name: 'description',
-          content: () => metaData.value.description,
+          content: () => product.value.description,
         },
       ],
     })
     useSeoMeta({
-      ogImage: () => "https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/thumbnail.png",
-      ogUrl: () => metaData.value.url,
-      ogTitle: () => metaData.value.title,
-      ogDescription: () => metaData.value.description,
+      ogImage: () => product.value.thumbnail,
+      ogUrl: () => metaUrl,
+      ogTitle: () => product.value.title,
+      ogDescription: () => product.value.description,
     })
 
 </script>
