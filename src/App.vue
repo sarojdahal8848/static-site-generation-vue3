@@ -1,6 +1,6 @@
 <script setup>
 import { onMounted, ref } from 'vue';
-import { useHead } from '@unhead/vue'
+import { useHead, useSeoMeta } from '@unhead/vue'
 
 const product = ref({})
 
@@ -37,39 +37,13 @@ useHead({
           name: 'description',
           content: () => metaData.value.description,
         },
-        {
-          property: 'og:url',
-          content: () => metaData.value.url,
-        },
-        {
-          property: 'og:title',
-          content: () => metaData.value.title,
-        },
-        {
-          property: 'og:image',
-          content: () => product.value.thumbnail,
-        },
-        {
-          property: 'og:description',
-          content: () => metaData.value.description,
-        },
-        {
-          name: 'twitter:title',
-          content: () => metaData.value.title,
-        },
-        {
-          name: 'twitter:url',
-          content: () => metaData.value.url,
-        },
-        {
-          name: 'twitter:image',
-          content: () => product.value.thumbnail,
-        },
-        {
-          name: 'twitter:description',
-          content: () => metaData.value.description,
-        },
       ],
+    })
+    useSeoMeta({
+      ogImage: () => "https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/thumbnail.png",
+      ogUrl: () => metaData.value.url,
+      ogTitle: () => metaData.value.title,
+      ogDescription: () => metaData.value.description,
     })
 
 </script>
